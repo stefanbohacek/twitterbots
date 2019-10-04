@@ -54,9 +54,10 @@ let dataSync = {
           } ), function ( err ) {
            if ( err ){
              console.log( err )
+           } else {
+              console.log( 'data file updated' );
            }
           } );  
-
           if ( cb ){
             cb( null, updatedBotData );
           }
@@ -75,15 +76,23 @@ let dataSync = {
     if ( botData ){
       // console.log( botData );
       botData.data = botData.data.sort( helpers.sortByFollowersCount );
+      
+      let syncIntervalMinutes = 60;
+
+      if ( process.env.SYNC_INTERVAL_MINUTES && process.env.SYNC_INTERVAL_MINUTES > 15 ){
+        syncIntervalMinutes = parseInt( process.env.SYNC_INTERVAL_MINUTES );
+      }
+      
       var todayDate = new Date(),
           lastCheckDate = new Date( botData.last_update ),
-          expirationDate = new Date( lastCheckDate.getTime() + 1440 * 60 * 1000 );
+          expirationDate = new Date( lastCheckDate.getTime() + ( syncIntervalMinutes * 60000 ) );
       
       console.log( {
           'lastCheckDate': lastCheckDate,
+          'syncIntervalMinutes' : `${syncIntervalMinutes} (${ ( syncIntervalMinutes/60 ).toFixed( 3 ) } hours)`,
           'expirationDate': expirationDate,
           'todayDate': todayDate,
-          'todayDate > expirationDate': todayDate > expirationDate,
+          'dataExpired': todayDate > expirationDate,
           // 'botData': botData
       } );
       
