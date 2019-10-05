@@ -12,3 +12,5 @@ Visit the [Botwiki blog](https://botwiki.org/blog/most-popular-twitter-bots-most
 See `data/bots.json` for list of bots. Bots starting with `?` will be ignored during data sync.
 
 You can force data reload by setting up the `SYNC_INTERVAL_PASSWORD` inside your `.env` file and then visiting `https://twitterbots.glitch.me/sync?password=PasswordStoredInEnvFile`.
+
+See also `misc/README.md`.
