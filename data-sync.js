@@ -22,6 +22,10 @@ let dataSync = {
     if ( botList && botList.length ){
       // console.log( 'botList', botList );
       
+      botList = botList.filter( function( bot ){
+        return bot.charAt(0) !== '?';
+      } );
+      
       twit.get( 'users/lookup', {
         screen_name: botList.join(',')
       }, function( err, data, response ) {
