@@ -20,11 +20,11 @@ let dataSync = {
     } catch ( err ){ console.log( err ) }
     
     if ( botList && botList.length ){
-      // console.log( 'botList', botList );
-      
       botList = botList.filter( function( bot ){
         return bot.charAt(0) !== '?';
       } );
+      
+      console.log( botList );
       
       twit.get( 'users/lookup', {
         screen_name: botList.join(',')
