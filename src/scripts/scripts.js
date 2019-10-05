@@ -21,12 +21,16 @@ helpers.ready(function() {
       if (data && data.data) {
         var that = this,
             mobileOptimized = ( window.innerWidth < 900 ? true : false );
-
+        
+        document.getElementById( 'data-last-update-value' ).innerHTML = moment( data.last_update ).fromNow();
+        document.getElementById( 'data-last-update' ).classList.remove( 'd-none' );
+        
         data = data.data
           .sort( helpers.sortByFollowersCount )
           .reverse()
           .slice( 0, 30 );
-        console.log( data );
+
+        // console.log( data );
         
         var dataTopFive = data.slice( 0, 5 );
         
@@ -34,7 +38,6 @@ helpers.ready(function() {
           data = dataTopFive;
           document.getElementById( 'mobile-optimized-note' ).classList.remove( 'd-none' )
         }
-        
 
         const botsByFollowers = document
           .getElementById( 'bots-by-followers' )
