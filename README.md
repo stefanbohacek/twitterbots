@@ -1,4 +1,4 @@
-![Thumbnail for the "Twitter bots with most followers" blog post](https://botwiki.org/wp-content/uploads/2019/10/bot-followers-blog-post-thumbnail.png)
+![Chart showing Twitter bots with the most followers](https://cdn.glitch.com/eafa115d-c307-4f55-8c74-1140bb1d0ef7%2Fchart-900px.png)
 
 # Twitter bots with most followers
 
