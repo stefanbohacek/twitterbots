@@ -1,7 +1,7 @@
 const fs = require( 'fs' ),
       path = require( 'path' ),
       Twit = require( 'twit' ),
-      config = require( path.join( __dirname, 'config.js' ) );
+      config = require( path.join( __dirname, 'config.js' ) ),
       T = new Twit( config.twitter );
 
 T.get( 'lists/members', {
