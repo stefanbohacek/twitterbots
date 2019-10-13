@@ -34,20 +34,21 @@ let dataSync = {
         } else {
           let updatedBotData = [];
           data.forEach( function( bot ){
-              updatedBotData.push( {
-                  id_str: bot.id_str,
-                  name: bot.name,
-                  screen_name: bot.screen_name,
-                  description: bot.description,
-                  followers_count: bot.followers_count,
-                  friends_count: bot.friends_count,
-                  created_at: bot.created_at,
-                  favourites_count: bot.favourites_count,
-                  verified: bot.verified,
-                  statuses_count: bot.statuses_count,
-                  profile_background_image_url_https: bot.profile_background_image_url_https,
-                  profile_image_url_https: bot.profile_image_url_https
-              } );
+            updatedBotData.push( {
+              id_str: bot.id_str,
+              name: bot.name,
+              screen_name: bot.screen_name,
+              description: bot.description,
+              followers_count: bot.followers_count,
+              friends_count: bot.friends_count,
+              created_at: bot.created_at,
+              last_tweet_date: bot.status ? bot.status.created_at : null,
+              favourites_count: bot.favourites_count,
+              verified: bot.verified,
+              statuses_count: bot.statuses_count,
+              profile_background_image_url_https: bot.profile_background_image_url_https,
+              profile_image_url_https: bot.profile_image_url_https
+            } );
           } );
 
           // console.log( updatedBotData );
