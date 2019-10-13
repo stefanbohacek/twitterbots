@@ -74,8 +74,9 @@ helpers.ready(function() {
                 yAxisID: 'statuses_frequency',
                 label: 'Tweets per day',
                 data: data.map(function(bot) {
+                  let lastTweetDate = bot.last_tweet_date || Date.now();
                   var duration = moment.duration(
-                    moment().diff(moment(bot.created_at))
+                    moment(lastTweetDate).diff(moment(bot.created_at))
                   );
                   var tweetsPerDay = bot.statuses_count / duration.asDays();
                   return Math.round(tweetsPerDay);
