@@ -14,3 +14,7 @@ See `data/bots.json` for list of bots. Bots starting with `?` will be ignored du
 You can force data reload by setting up the `SYNC_INTERVAL_PASSWORD` inside your `.env` file and then visiting `https://twitterbots.glitch.me/sync?password=PasswordStoredInEnvFile`.
 
 See also `misc/README.md`.
+
+## Related projects
+
+- [my-twitterbots](https://glitch.com/edit/#!/my-twitterbots): Create a chart using your own Twitter bots
