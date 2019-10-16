@@ -270,7 +270,7 @@ helpers.ready(function() {
                       moment( dataPoint.created_at ).format( 'MMMM Do, YYYY' ) +
                       ' at a rate of  ' +
                       tweetsPerDay +
-                      ' tweets per day, and has ' +
+                      ' tweet' + ( tweetsPerDay > 1 ? 's' : '' ) + ' per day, and has ' +
                       helpers.numberWithCommas( dataPoint.followers_count ) +
                       ' followers.</td></tr>';
                   }
