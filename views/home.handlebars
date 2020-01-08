@@ -1,16 +1,8 @@
 <div class="container pb-5">
-  <header class="mt-5">
-<!--
-    <h1>
-      {{ project_title }}
-    </h1>
--->
-  </header>
   <p class="status"></p>
-  <canvas id="bots-by-followers"></canvas>
-  <p class="d-none" id="mobile-optimized-note">
-    <em>Visit this page on a device with a larger screen to see the full dataset.</em>
-  </p>
+  <div id="chart-wrapper">
+    <canvas id="bots-by-followers"></canvas>  
+  </div>
   <p id="data-last-update" class="d-none">Data updated <span id="data-last-update-value"></span>.</p>
   <p>
     <em>Note: Clicking a bar in the chart opens the corresponding bot's Twitter page.</em>

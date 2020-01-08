@@ -32,26 +32,19 @@ helpers.ready(function() {
 
         // console.log( data );
         
-        var dataTopFive = data.slice( 0, 5 );
-        
-        if ( mobileOptimized ){
-          data = dataTopFive;
-          document.getElementById( 'mobile-optimized-note' ).classList.remove( 'd-none' )
-        }
-
         const botsByFollowers = document
           .getElementById( 'bots-by-followers' )
           .getContext( '2d' );
 
         const botsByFollowersChart = new Chart(botsByFollowers, {
-          type: 'bar',
+          type: 'horizontalBar',
           data: {
             labels: data.map(function(bot) {
               return '@' + bot.screen_name;
             }),
             datasets: [
               {
-                yAxisID: 'followers_count',
+                xAxisID: 'followers_count',
                 label: 'Number of followers',
                 data: data.map(function(bot) {
                   return bot.followers_count;
@@ -61,7 +54,7 @@ helpers.ready(function() {
                 borderWidth: 1
               },
               {
-                yAxisID: 'statuses_count',
+                xAxisID: 'statuses_count',
                 label: 'Number of tweets',
                 data: data.map(function(bot) {
                   return bot.statuses_count;
@@ -71,7 +64,7 @@ helpers.ready(function() {
                 borderWidth: 1
               },
               {
-                yAxisID: 'statuses_frequency',
+                xAxisID: 'statuses_frequency',
                 label: 'Tweets per day',
                 data: data.map(function(bot) {
                   let lastTweetDate = bot.last_tweet_date || Date.now();
@@ -89,6 +82,8 @@ helpers.ready(function() {
             ]
           },
           options: {
+            responsive: true,
+            maintainAspectRatio: false,
             onClick: function(ev, data) {
               // console.log( 'chart click', ev, data );
               if (data && data[0] && data[0]._view && data[0]._view.label) {
@@ -110,13 +105,13 @@ helpers.ready(function() {
                   if (index === 1) {
                     ci.getDatasetMeta(1).hidden = false;
                     ci.getDatasetMeta(2).hidden = true;
-                    ci.options.scales.yAxes[1].display = true;
-                    ci.options.scales.yAxes[2].display = false;
+                    ci.options.scales.xAxes[1].display = true;
+                    ci.options.scales.xAxes[2].display = false;
                   } else if (index === 2) {
                     ci.getDatasetMeta(1).hidden = true;
                     ci.getDatasetMeta(2).hidden = false;
-                    ci.options.scales.yAxes[1].display = false;
-                    ci.options.scales.yAxes[2].display = true;
+                    ci.options.scales.xAxes[1].display = false;
+                    ci.options.scales.xAxes[2].display = true;
                   }
 
                   ci.update();
@@ -124,7 +119,7 @@ helpers.ready(function() {
               }
             },
             scales: {
-              xAxes: [
+              yAxes: [
                 {
                   type: 'category',
                   ticks: {
@@ -132,13 +127,13 @@ helpers.ready(function() {
                   }
                 }
               ],
-              yAxes: [
+              xAxes: [
                 {
                   id: 'followers_count',
                   type: 'linear',
-                  position: 'left',
+                  position: 'top',
                   scaleLabel: {
-                    display: ( mobileOptimized ? false : true ),
+                    display: true,
                     labelString: 'Number of followers'
                   },                  
                   ticks: {
@@ -154,9 +149,9 @@ helpers.ready(function() {
                 {
                   id: 'statuses_count',
                   type: 'linear',
-                  position: 'right',
+                  position: 'bottom',
                   scaleLabel: {
-                    display: ( mobileOptimized ? false : true ),
+                    display: true,
                     labelString: 'Total number of tweets'
                   },
                   ticks: {
