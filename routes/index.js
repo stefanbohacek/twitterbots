@@ -13,6 +13,12 @@ let twitterData = data.data.sort( function( a, b ){
   return 0;
 } );
 
+// const verifiedBots = twitterData.filter( function( bot ){
+//   return bot.verified;
+// } );
+
+// console.log( verifiedBots.map( function( bot ){ return bot.screen_name } ) );
+
 twitterData = twitterData.map( function( bot ) {
   const lastTweetDate = bot.last_tweet_date || Date.now();
 
@@ -34,6 +40,7 @@ twitterData = twitterData.map( function( bot ) {
   return {
     name: bot.name,
     screen_name: `@{ bot.screen_name }`,
+    verified: bot.verified,
     url: `https://twitter.com/${ bot.screen_name }`,
     profile_background_image_url_https: bot.profile_background_image_url_https,
     profile_image_url_https: bot.profile_image_url_https,
@@ -45,6 +52,8 @@ twitterData = twitterData.map( function( bot ) {
     tweetFrequency: tweetFrequency
   }
 } );
+
+
 
 router.get( '/', function( req, res ) {
   res.render( '../views/home.handlebars', {
