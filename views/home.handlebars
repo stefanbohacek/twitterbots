@@ -7,6 +7,42 @@
   <p>
     <em>Note: Clicking a bar in the chart opens the corresponding bot's Twitter page.</em>
   </p>
+  <p>
+    Here's a closer look at the top 10 bots.
+  </p>
+  
+  <div class="container">
+    <div class="row list">
+      {{#each dataTopTen}}
+        <div class="col-sm-12 col-md-6 list-item">
+          <div class="card">
+            <div class="card-body">
+              <div class="media">
+                <a href="https://twitter.com/{{this.screen_name}}">
+                  <img class="mr-3" src="{{this.profile_image_url_https}}" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                  <a href="https://twitter.com/{{this.screen_name}}">
+                    <h5 class="mt-0">{{this.name}} </h5>
+                  </a>
+                  <p>
+                    <a class="text-muted" href="https://twitter.com/{{this.screen_name}}">@{{this.name}}</a>
+                  </p>
+                  <p>{{this.description}}</p>
+                  <ul>
+                    <li>{{this.followers_count}} followers</li>
+                    <li>{{this.statuses_count}} tweets</li>
+                    <li>{{this.tweetFrequency}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  
   <div class="mt-5">
       Created by <a href="https://twitter.com/fourtonfish">@fourtonfish</a>
       <a class="btn btn-light btn-sm" href="https://glitch.com/edit/#!/{{project_name}}?path=README.md">View source</a>
