@@ -1,1 +1,1 @@
-body{color:#363636}#chart-wrapper{min-height:900px}.list{display:flex;flex-wrap:wrap}.list-item{display:flex;margin-bottom:20px}
+body{color:#363636}ul.list-chart{list-style:none;padding-left:1rem}ul.list-chart li:before{content:'\1F4C8';margin-left:-1rem;margin-right:5px}#chart-wrapper{min-height:900px}.list{display:flex;flex-wrap:wrap}.list-item{display:flex;margin-bottom:20px}

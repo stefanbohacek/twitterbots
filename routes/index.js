@@ -39,7 +39,7 @@ twitterData = twitterData.map( function( bot ) {
 
   return {
     name: bot.name,
-    screen_name: `@{ bot.screen_name }`,
+    screen_name: `@${ bot.screen_name }`,
     verified: bot.verified,
     url: `https://twitter.com/${ bot.screen_name }`,
     profile_background_image_url_https: bot.profile_background_image_url_https,

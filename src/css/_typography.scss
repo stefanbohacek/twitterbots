@@ -1,3 +1,16 @@
 body{
   color: $black;
 }
+
+ul.list-chart{
+  list-style: none;
+  padding-left: 1rem;
+
+  li{
+    &:before{
+      content: '\1F4C8';
+      margin-left: -1rem;
+      margin-right: 5px;
+    }    
+  }
+}
