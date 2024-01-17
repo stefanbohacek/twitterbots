@@ -1,6 +1,8 @@
 const path = require('path'),
       express = require('express'),
       exphbs  = require('express-handlebars'),
+      Handlebars = require('handlebars'),
+      {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access'),
       bodyParser = require('body-parser'),
       sassMiddleware = require('node-sass-middleware'),
       babelify = require('express-babelify-middleware'),
@@ -22,13 +24,17 @@ app.use(bodyParser.urlencoded({
 
 app.use( bodyParser.json() );
 
-app.use('/js/', babelify('src/scripts/', {
-  minify: true
-}));
+// app.use('/js/', babelify('src/scripts/', {
+//   minify: true
+// }));
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+// app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs.engine({ extname: '.handlebars', defaultLayout: "main"}));
+app.set('view engine', 'handlebars')
+
 app.set('views', __dirname + '/views');
-app.set('view engine', 'handlebars');
+// app.set('view engine', 'hbs');
+// app.set('view engine', 'handlebars');
 
 app.use('/', require('./routes/index.js'))
 app.use('/data', require('./routes/data.js'))

@@ -31,6 +31,7 @@ let dataSync = {
       }, function( err, data, response ) {
         if ( err ){
           console.log( err );
+          cb(err, null);
         } else {
           let updatedBotData = [];
           data.forEach( function( bot ){
@@ -101,16 +102,18 @@ let dataSync = {
           // 'botData': botData
       } );
       
-      if ( !botData || !botData.data || !botData.data.length || todayDate > expirationDate ){
-        /* Update data */
-        dataSync.reload( function( err, data ){
-          cb( null, data );
-        });
-      } else {
-        if ( cb ){
-          cb( null, botData );
-        }
-      }
+      cb( null, botData );
+      
+      // if ( !botData || !botData.data || !botData.data.length || todayDate > expirationDate ){
+      //   /* Update data */
+      //   dataSync.reload( function( err, data ){
+      //     cb( null, data );
+      //   });
+      // } else {
+      //   if ( cb ){
+      //     cb( null, botData );
+      //   }
+      // }
     }
   }  
 }
